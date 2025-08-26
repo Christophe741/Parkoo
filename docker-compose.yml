@@ -1,6 +1,13 @@
-version: "3.8"
-
 services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    restart: always
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
   db:
     image: mariadb:10.4
     container_name: parkoo-db
@@ -14,13 +21,11 @@ services:
       - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
-
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: parkoo-pma
     restart: always
     ports:
       - "8081:80"
-
 volumes:
   db_data:
