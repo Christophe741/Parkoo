@@ -9,21 +9,38 @@
 </head>
 <body>
 
-  <main class="hero">
-    <h1 class="logo">Parkoo</h1>
+  <header class="desktop-header">
+  <a href="index.php" class="logo">Parkoo</a>
+  <nav class="desktop-nav">
+    <a href="#">Accueil</a>
+    <a href="#">Trouver une place</a>
+    <a href="#">Connexion</a>
+  </nav>
+</header>
+
+<main class="hero">
+  <h1 class="logo">Parkoo</h1>
+  
+  <section class="search_section">
     <h2 class="subtitle">Le Parking<br />Partagé</h2>
 
     <div class="hero__buttons">
       <a href="#" class="btn btn--light">Trouver une place</a>
       <a href="#" class="btn btn--dark">Partager une place</a>
     </div>
-  </main>
+  </section>
+</main>
 
   <nav class="bottom-nav">
     <a href="#">Accueil</a>
     <a href="#">Trouver une place</a>
     <a href="#">Connexion</a>
   </nav>
+
+  <footer class="desktop-footer">
+  <p>&copy; 2025 Parkoo. Tous droits réservés.</p>
+  <a href="#" class="legal">Mentions légales</a>
+</footer>
 
 </body>
 </html>
