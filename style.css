@@ -117,16 +117,31 @@ body {
   text-decoration: none;
   color: inherit;
 }
+/*---------- 4. PAGE : search.php ----------*/
+.hero {
+  background: none;
+}
 
-/*---------- MEDIA QUERIES ----------*/
+.results {
+  padding: 2rem 1.25rem 4rem;
+  line-height: 1.6;
+}
+
+/* ===============================
+   MEDIA QUERIES — DESKTOP
+   =============================== */
+
 @media (min-width: 768px) {
+  /*---------- 1. GLOBAL STYLES  ----------*/
   body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
   }
-
+  /*---------- 2. PAGE : index.php ----------*/
   .hero {
+    display: flex;
+    flex: 1;
     background: none;
     height: auto;
   }
@@ -208,5 +223,13 @@ body {
   .legal {
     text-decoration: none;
     color: #000;
+  }
+  /*---------- 3. PAGE : search.php ----------*/
+  .results {
+    flex: 1;
+    padding: 2rem 1.25rem 4rem;
+    max-width: 720px;
+    margin: 0 auto;
+    line-height: 1.6;
   }
 }
