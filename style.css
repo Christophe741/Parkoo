@@ -148,12 +148,17 @@ body {
     align-items: center;
     padding: 1rem 2rem;
     border-bottom: 1px solid #ddd;
-    background-color: #f8f8f8;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      #cfffe5 100%
+    );
   }
 
   .search_section {
     display: flex;
     flex-direction: column;
+    margin-top: -1px;
     justify-content: center;
     height: 25rem;
     background: url("assets/automobile.jpg") center/cover no-repeat;
