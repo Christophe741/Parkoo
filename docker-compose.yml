@@ -6,6 +6,7 @@ services:
     restart: always
     volumes:
       - .:/var/www/html
+      - /dev/null:/var/www/html/.env.local
     depends_on:
       - db
   db:
