@@ -22,7 +22,7 @@ body {
   flex-direction: column;
   height: 100vh;
   text-align: center;
-  background: url("assets/automobile.jpg") center/cover no-repeat;
+  background: url("assets/images/automobile.jpg") center/cover no-repeat;
   background-color: rgba(255, 255, 255, 0.6);
   background-blend-mode: lighten;
 }
@@ -118,10 +118,13 @@ body {
   color: inherit;
 }
 /*---------- 4. PAGE : search.php ----------*/
-.hero {
-  background: none;
-}
 
+.search-results {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  text-align: center;
+}
 .results {
   padding: 2rem 1.25rem 4rem;
   line-height: 1.6;
@@ -143,7 +146,6 @@ body {
     display: flex;
     flex: 1;
     background: none;
-    height: auto;
   }
 
   .hero .logo {
@@ -176,7 +178,7 @@ body {
     margin-top: -1px;
     justify-content: center;
     height: 25rem;
-    background: url("assets/automobile.jpg") center/cover no-repeat;
+    background: url("assets/images/automobile.jpg") center/cover no-repeat;
     background-color: rgba(255, 255, 255, 0.6);
     background-blend-mode: lighten;
   }
