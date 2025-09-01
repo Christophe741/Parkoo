@@ -7,7 +7,7 @@
 
  <?php require_once 'includes/desktop_header.php';?>
 
- <main class="hero">
+ <main class="search-results">
   <h1 class="logo">Parkoo</h1>
     <section class="results">
      <h2 class="subtitle">Résultats de recherche</h2>
