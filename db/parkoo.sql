@@ -49,7 +49,7 @@ INSERT INTO `parkings` (`id`, `owner_id`, `address`, `city`, `postal_code`, `pri
 (2, 4, '12 rue des Acacias', 'Toulouse', '31000', 1.80, 0, 'Bonjour , je vous propose 4 places de parking sécurisées ( portail et vidéo) à 5 min de l\'aéroport. Le trajet pour vous conduire à l\'aéroport et revenir vous chercher se fera avec mon véhicule personnel, de jour comme de nuit.', 1, '2025-08-31 20:12:41'),
 (3, 2, '55 boulevard Saint-Michel', 'Paris', '75005', 3.50, 1, 'Garage sécurisé proche du Jardin du Luxembourg.', 1, '2025-08-31 20:12:41'),
 (4, 4, '24 rue de la Plage', 'Nice', '06000', 2.00, 0, 'Stationnement à 5 min à pied de la mer.', 0, '2025-08-31 20:12:41'),
-(5, 7, '8 avenue des Lilas', 'Toulouse', '31000', 2.80, 0, 'Place à l’ombre dans une cour privée.', 1, '2025-09-02 00:18:57');
+(5, 7, '8 avenue des Lilas', 'Toulouse', '31000', 2.80, 0, 'Place à l'ombre dans une cour privée.', 1, '2025-09-02 00:18:57');
 
 -- --------------------------------------------------------
 
