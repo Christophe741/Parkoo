@@ -20,7 +20,7 @@ function updateCardText(card, parking) {
   card.querySelector(".city").textContent = parking.city;
   card.querySelector(".display_name").textContent = parking.display_name;
   card.querySelector(".description").textContent = parking.description;
-  card.querySelector(".price").textContent = `${parking.price_per_hour} /jour`;
+  card.querySelector(".price").textContent = `${parking.price_per_hour} €/jour`;
 }
 // === Fonctions utilitaires ===
 
