@@ -154,6 +154,13 @@ body {
   height: 100px;
 }
 
+.city,
+.display_name,
+.price {
+  font-weight: 600;
+  color: #3eb489;
+}
+
 .display_name,
 .description {
   padding-bottom: 1rem;
