@@ -139,6 +139,26 @@ body {
   line-height: 1.6;
 }
 
+.parking-card {
+  padding: 1rem;
+  margin-bottom: 2rem;
+  text-align: left;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.photo {
+  width: 100px;
+  height: 100px;
+}
+
+.display_name,
+.description {
+  padding-bottom: 1rem;
+}
+
 /* ===============================
    MEDIA QUERIES — DESKTOP
    =============================== */
