@@ -134,6 +134,50 @@ body {
   min-height: 100vh;
   text-align: center;
 }
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1.5rem auto;
+  width: 90%;
+  max-width: 400px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-input:focus {
+  border-color: #45b78f;
+  box-shadow: 0 0 0 3px rgba(69, 183, 143, 0.2);
+}
+
+.search-button {
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  background-color: #45b78f;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.search-button:hover {
+  background-color: #3ca67f;
+}
+
+.search-button:active {
+  transform: scale(0.97);
+}
+
 .results {
   padding: 2rem 1.25rem 4rem;
   line-height: 1.6;
@@ -274,11 +318,23 @@ body {
     display: none;
   }
 
+  .search-form {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1.5rem auto;
+    width: 90%;
+    max-width: 400px;
+  }
+
   .results {
     flex: 1;
     padding: 2rem 1.25rem 4rem;
-    max-width: 720px;
     margin: 0 auto;
     line-height: 1.6;
+  }
+
+  .parking-card {
+    width: 720px;
   }
 }

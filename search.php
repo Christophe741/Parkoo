@@ -13,7 +13,7 @@
   <section class="search-hero">
   <h1 class="title">Trouvez une place</h1>
 
-  <form id="search-form" class="search-form" action="search.php" method="get">
+  <form id="search-form" class="search-form">
     <input class="search-input" type="text" name="city" placeholder="Rechercher par ville">
     <button class="search-button" type="submit">Rechercher</button>
   </form>
