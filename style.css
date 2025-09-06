@@ -34,6 +34,10 @@ body {
   line-height: 1.4;
 }
 
+.error {
+  color: #dc3545;
+}
+
 /*---------- 3. COMPONENT : desktop_header.php ----------*/
 .desktop-header {
   display: none;
@@ -137,6 +141,7 @@ body {
 
 .search-form {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   gap: 0.5rem;
   margin: 1.5rem auto;
@@ -147,6 +152,7 @@ body {
 .search-input {
   flex: 1;
   padding: 0.7rem 1rem;
+  margin-bottom: 0.5rem;
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 0.5rem;
@@ -160,7 +166,9 @@ body {
 }
 
 .search-button {
+  max-width: 200px;
   padding: 0.7rem 1.2rem;
+  margin: 0 auto;
   font-size: 1rem;
   background-color: #45b78f;
   color: #fff;
@@ -320,6 +328,7 @@ body {
 
   .search-form {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     gap: 0.5rem;
     margin: 1.5rem auto;
@@ -332,6 +341,10 @@ body {
     padding: 2rem 1.25rem 4rem;
     margin: 0 auto;
     line-height: 1.6;
+  }
+
+  .search-input {
+    margin-bottom: 0;
   }
 
   .parking-card {

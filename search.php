@@ -7,17 +7,16 @@
 
  <?php require_once 'includes/desktop_header.php';?>
 
- <main class="search-results">
+<main class="search-results">
   <h1 class="logo">Parkoo</h1>
     
   <section class="search-hero">
-  <h1 class="title">Trouvez une place</h1>
-
-  <form id="search-form" class="search-form">
-    <input class="search-input" type="text" name="city" placeholder="Rechercher par ville">
-    <button class="search-button" type="submit">Rechercher</button>
-  </form>
-</section>
+   <h1 class="title">Trouvez une place</h1>
+   <form id="search-form" class="search-form">
+     <input class="search-input" type="text" name="city" placeholder="Rechercher par ville">
+     <button class="search-button" type="submit">Rechercher</button>
+   </form>
+  </section>
   
   <section class="results">
      <h2 id = "results-title" class="subtitle" hidden>Résultats de recherche</h2>
@@ -31,7 +30,10 @@
            <p class="price"></p>
           </div>
        </template>
-   </section>
+       <template id="error-template">
+        <p class="error"></p>
+      </template>
+  </section>
 </main>
 
  <?php require_once 'includes/bottom_nav.php';?>
