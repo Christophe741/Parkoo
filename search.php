@@ -19,7 +19,6 @@
   </section>
   
   <section class="results">
-     <h2 id = "results-title" class="subtitle" hidden>Résultats de recherche</h2>
      <div id="results"></div>
        <template id="parking-card-template">
           <div class="parking-card">

@@ -33,10 +33,7 @@ function getPageParams() {
 
 // === Fonctions métier ===
 
-function fetchParkings(city, container, title) {
-  if (title) {
-    title.hidden = false;
-  }
+function fetchParkings(city, container) {
   container.innerHTML = "";
   fetch(`api/get_parkings.php?city=${encodeURIComponent(city)}`)
     .then((res) => res.json())
@@ -46,21 +43,15 @@ function fetchParkings(city, container, title) {
           container.appendChild(buildCard(parking))
         );
       } else {
-        renderError(
-          "Erreur : Aucune annonce trouvé pour cette recherche.",
-          container
-        );
+        renderError("Aucune annonce trouvé pour cette recherche.", container);
       }
     })
     .catch(() => {
-      renderError(
-        "Erreur : Erreur lors du chargement des annonces.",
-        container
-      );
+      renderError("Erreur lors du chargement des annonces.", container);
     });
 }
 
-function handleFormSubmit(e, form, container, title) {
+function handleFormSubmit(e, form, container) {
   e.preventDefault();
   const city = form.elements.city.value;
 
@@ -69,7 +60,7 @@ function handleFormSubmit(e, form, container, title) {
     return;
   }
 
-  fetchParkings(city, container, title);
+  fetchParkings(city, container);
 }
 
 // === Point d’entrée du script ===
@@ -77,12 +68,9 @@ function handleFormSubmit(e, form, container, title) {
 domReady(() => {
   const container = document.getElementById("results");
   const form = document.getElementById("search-form");
-  const title = document.getElementById("results-title");
   const { city } = getPageParams();
   if (city) {
-    fetchParkings(city, container, title);
+    fetchParkings(city, container);
   }
-  form.addEventListener("submit", (e) =>
-    handleFormSubmit(e, form, container, title)
-  );
+  form.addEventListener("submit", (e) => handleFormSubmit(e, form, container));
 });
