@@ -1,5 +1,5 @@
 import { domReady } from "./domReady.js";
-import { cloneTemplate, renderError } from "./utils/dom.js";
+import { cloneTemplate, renderMessage } from "./utils/dom.js";
 
 // === Fonctions liées au rendu DOM ===
 
@@ -43,11 +43,15 @@ function fetchParkings(city, container) {
           container.appendChild(buildCard(parking))
         );
       } else {
-        renderError("Aucune annonce trouvé pour cette recherche.", container);
+        renderMessage("Aucune annonce trouvé pour cette recherche.", container);
       }
     })
     .catch(() => {
-      renderError("Erreur lors du chargement des annonces.", container);
+      renderMessage(
+        "Erreur lors du chargement des annonces.",
+        container,
+        "error"
+      );
     });
 }
 
@@ -56,7 +60,7 @@ function handleFormSubmit(e, form, container) {
   const city = form.elements.city.value;
 
   if (!city) {
-    container.textContent = "Veuillez saisir une ville.";
+    renderMessage("Veuillez saisir une ville.", container);
     return;
   }
 

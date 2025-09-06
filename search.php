@@ -29,8 +29,8 @@
            <p class="price"></p>
           </div>
        </template>
-       <template id="error-template">
-        <p class="error"></p>
+       <template id="message-template">
+        <p class="message"></p>
       </template>
   </section>
 </main>

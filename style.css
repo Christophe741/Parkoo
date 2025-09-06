@@ -34,8 +34,22 @@ body {
   line-height: 1.4;
 }
 
-.error {
-  color: #dc3545;
+.message {
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.message.error {
+  background-color: #ffe5e5;
+  color: #b00020;
+  border: 1px solid #b00020;
+}
+
+.message.info {
+  background-color: #e8f4ff;
+  color: #00529b;
+  border: 1px solid #00529b;
 }
 
 /*---------- 3. COMPONENT : desktop_header.php ----------*/
@@ -188,6 +202,7 @@ body {
 
 .results {
   padding: 2rem 1.25rem 4rem;
+  margin: 0 auto;
   line-height: 1.6;
 }
 
