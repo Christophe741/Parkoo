@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../vendor/autoload.php';
 $envLocalPath = __DIR__ . '/../.env.local';
 $envPath      = __DIR__ . '/../.env';
 
@@ -27,4 +28,15 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     die("Erreur de connexion à la base de données : " . $e->getMessage());
+}
+
+$mongoUri    = getenv('MONGO_URI') ?: die('Erreur : MONGO_URI non défini.');
+$mongoDbName = getenv('MONGO_DB') ?: 'parkoo';
+
+try {
+    $mongo   = new MongoDB\Client($mongoUri);
+    $mongoDb = $mongo->selectDatabase($mongoDbName);
+    
+} catch (Exception $e) {
+    die('Erreur de connexion à MongoDB : ' . $e->getMessage());
 }
