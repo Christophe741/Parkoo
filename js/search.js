@@ -1,4 +1,4 @@
-import { domReady } from "./domReady.js";
+import { domReady } from "./dom-ready.js";
 import { cloneTemplate, renderMessage } from "./utils/dom.js";
 
 // === Fonctions liées au rendu DOM ===
@@ -18,7 +18,7 @@ function updateCardImage(card, parking) {
 
 function updateCardText(card, parking) {
   card.querySelector(".city").textContent = parking.city;
-  card.querySelector(".display_name").textContent = parking.display_name;
+  card.querySelector(".display-name").textContent = parking.display_name;
   card.querySelector(".description").textContent = parking.description;
   card.querySelector(".price").textContent = `${parking.price_per_hour} €/jour`;
 }

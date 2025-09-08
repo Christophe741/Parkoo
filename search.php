@@ -24,7 +24,7 @@
           <div class="parking-card">
            <img class="photo" src="" alt="" />
            <p class="city"></p>
-           <p class="display_name"></p>
+           <p class="display-name"></p>
            <p class="description"></p>
            <p class="price"></p>
           </div>

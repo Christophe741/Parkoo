@@ -224,13 +224,13 @@ body {
 }
 
 .city,
-.display_name,
+.display-name,
 .price {
   font-weight: 600;
   color: #3eb489;
 }
 
-.display_name,
+.display-name,
 .description {
   padding-bottom: 1rem;
 }
