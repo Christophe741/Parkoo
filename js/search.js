@@ -5,6 +5,7 @@ import { cloneTemplate, renderMessage } from "./utils/dom.js";
 
 function buildCard(parking) {
   const card = cloneTemplate("parking-card-template");
+  card.href = `parking_detail?id=${parking.id}`;
   updateCardImage(card, parking);
   updateCardText(card, parking);
   return card;

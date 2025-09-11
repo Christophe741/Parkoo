@@ -21,13 +21,13 @@
   <section class="results">
      <div id="results"></div>
        <template id="parking-card-template">
-          <div class="parking-card">
+          <a class="parking-card">
            <img class="photo" src="" alt="" />
            <p class="city"></p>
            <p class="display-name"></p>
            <p class="description"></p>
            <p class="price"></p>
-          </div>
+          </a>
        </template>
        <template id="message-template">
         <p class="message"></p>

@@ -209,9 +209,12 @@ body {
 }
 
 .parking-card {
+  display: block;
   padding: 1rem;
   margin-bottom: 2rem;
+  text-decoration: none;
   text-align: left;
+  color: inherit;
   background-color: #ffffff;
   border: 1px solid #ddd;
   border-radius: 0.5rem;
