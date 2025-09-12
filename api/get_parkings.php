@@ -6,8 +6,8 @@ header('Content-Type: application/json');
 $city = trim($_GET['city'] ?? '');
 
 if ($city) {
-    $stmt = $pdo->prepare("SELECT parkings.city, parkings.description, parkings.price_per_hour,
-                                  parkings.description, users.photo,
+    $stmt = $pdo->prepare("SELECT parkings.id, parkings.city, parkings.description, 
+                                  parkings.price_per_hour, parkings.description, users.photo,
                                   CONCAT(UPPER(LEFT(users.firstname, 1)), LOWER(SUBSTRING(users.firstname, 2)), ' ', UPPER(LEFT(users.name, 1)), '.') AS display_name
                            FROM parkings
                            JOIN users ON parkings.owner_id = users.id
