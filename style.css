@@ -107,7 +107,45 @@ body {
   color: inherit;
 }
 
-/*---------- 6. PAGE : index.php ----------*/
+/*---------- 6. COMPONENT : parking-card ----------*/
+
+.results {
+  padding: 2rem 1.25rem 4rem;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.parking-card {
+  display: block;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  text-decoration: none;
+  text-align: left;
+  color: inherit;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.photo {
+  width: 100px;
+  height: 100px;
+}
+
+.city,
+.display-name,
+.price {
+  font-weight: 600;
+  color: #3eb489;
+}
+
+.display-name,
+.description {
+  padding-bottom: 1rem;
+}
+
+/*---------- 7. PAGE : index.php ----------*/
 .hero {
   display: flex;
   flex-direction: column;
@@ -154,7 +192,7 @@ body {
   line-height: 1.6;
 }
 
-/*---------- 7. PAGE : search.php ----------*/
+/*---------- 8. PAGE : search.php ----------*/
 .search-form {
   display: flex;
   flex-direction: column;
@@ -202,40 +240,9 @@ body {
   transform: scale(0.97);
 }
 
-.results {
-  padding: 2rem 1.25rem 4rem;
-  margin: 0 auto;
-  line-height: 1.6;
-}
-
-.parking-card {
-  display: block;
-  padding: 1rem;
-  margin-bottom: 2rem;
-  text-decoration: none;
-  text-align: left;
-  color: inherit;
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-}
-
-.photo {
-  width: 100px;
-  height: 100px;
-}
-
-.city,
-.display-name,
-.price {
-  font-weight: 600;
-  color: #3eb489;
-}
-
-.display-name,
-.description {
-  padding-bottom: 1rem;
+/*---------- 8. PAGE : parking-detail.php ----------*/
+p:has(span.has-ev-charging) {
+  padding-bottom: 0.5rem;
 }
 
 /* ===============================
@@ -294,7 +301,19 @@ body {
     flex-direction: row;
   }
 
-  /*---------- 5. PAGE : index.php ----------*/
+  /*---------- 5. COMPONENT : parking-card ----------*/
+  .results {
+    flex: 1;
+    padding: 2rem 1.25rem 4rem;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .parking-card {
+    width: 720px;
+  }
+
+  /*---------- 6. PAGE : index.php ----------*/
   .hero {
     display: flex;
     flex: 1;
@@ -335,7 +354,8 @@ body {
     text-decoration: none;
     color: #000;
   }
-  /*---------- 6. PAGE : search.php ----------*/
+
+  /*---------- 7. PAGE : search.php ----------*/
   .page-layout .logo {
     display: none;
   }
@@ -350,18 +370,7 @@ body {
     max-width: 400px;
   }
 
-  .results {
-    flex: 1;
-    padding: 2rem 1.25rem 4rem;
-    margin: 0 auto;
-    line-height: 1.6;
-  }
-
   .search-input {
     margin-bottom: 0;
-  }
-
-  .parking-card {
-    width: 720px;
   }
 }
