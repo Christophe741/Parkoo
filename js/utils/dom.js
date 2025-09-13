@@ -3,8 +3,13 @@ export function cloneTemplate(id) {
   return tpl?.content.firstElementChild.cloneNode(true);
 }
 
-export function renderMessage(message, container, type = "info") {
-  container.innerHTML = "";
+export function renderMessage(
+  message,
+  container,
+  type = "info",
+  clear = "true"
+) {
+  if (clear) container.innerHTML = "";
   const msgEl = cloneTemplate("message-template");
   msgEl.textContent = message;
   msgEl.classList.add(type);
