@@ -28,7 +28,7 @@ try {
         LIMIT 1";
   $stmt = $pdo->prepare($sql);
   $stmt->execute([$parkingId]);
-  $row = $stmt->fetch();
+  $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
   if (!$row) {
     http_response_code(404);
@@ -60,12 +60,18 @@ try {
 
   $reviews = [];
   foreach ($cursor as $doc) {
+    $reviewerStmt = $pdo->prepare("SELECT firstname, name FROM users WHERE id = ? LIMIT 1");
+    $reviewerStmt->execute([$doc['reviewer_id']]);
+    $reviewer = $reviewerStmt->fetch(PDO::FETCH_ASSOC);
+    $reviewer_name = $reviewer
+      ? (strtoupper(substr($reviewer['firstname'],0,1)) . strtolower(substr($reviewer['firstname'],1)) . ' ' . strtoupper(substr($reviewer['name'],0,1)) . '.')
+      : '';
+
     $reviews[] = [
-      'reviewer_id'      => $doc['reviewer_id'],
-      'reviewed_user_id' => $doc['reviewed_user_id'],
-      'rating'           => $doc['rating'],
-      'comment'          => $doc['comment'] ?? '',
-      'created_at'       => $doc['created_at'] ?? '',
+      'reviewer_name'     => $reviewer_name,
+      'rating'            => $doc['rating'],
+      'comment'           => $doc['comment'] ?? '',
+      'created_at'        => $doc['created_at'] ?? '',
     ];
   }
 

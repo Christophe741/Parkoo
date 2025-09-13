@@ -38,6 +38,37 @@ function renderParkingDetail(parking, container) {
   container.appendChild(buildParkingDetail(parking));
 }
 
+function buildReview(review) {
+  const reviewEl = cloneTemplate("review-template");
+  reviewEl.querySelector(".reviewer-name").textContent = review.reviewer_name;
+  reviewEl.querySelector(".rating").textContent = `Note : ${review.rating}/5`;
+  reviewEl.querySelector(".comment").textContent = review.comment || "";
+  return reviewEl;
+}
+
+function renderReviews(reviews, summary, container) {
+  const section = document.createElement("section");
+  section.classList.add("reviews");
+
+  const title = document.createElement("h2");
+  if (summary.count) {
+    title.textContent = `Avis (${summary.count}) - ${summary.average}/5`;
+  } else {
+    title.textContent = "Avis";
+  }
+  section.appendChild(title);
+
+  if (reviews.length) {
+    reviews.forEach((rev) => section.appendChild(buildReview(rev)));
+  } else {
+    const p = document.createElement("p");
+    p.textContent = "Aucun avis pour ce parking.";
+    section.appendChild(p);
+  }
+
+  container.appendChild(section);
+}
+
 // === Fonctions métier ===
 
 function fetchParkingDetail(parkingId, container) {
@@ -50,6 +81,7 @@ function fetchParkingDetail(parkingId, container) {
       }
 
       renderParkingDetail(data.parking, container);
+      renderReviews(data.reviews, data.reviews_summary, container);
     })
     .catch(() => {
       renderMessage("Erreur lors du chargement du parking.", container);

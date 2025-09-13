@@ -25,6 +25,13 @@
        <template id="message-template">
         <p class="message"></p>
       </template>
+      <template id="review-template">
+       <div class="review">
+         <p class="reviewer-name"></p>
+         <p class="rating"></p>
+         <p class="comment"></p>
+       </div>
+      </template>
   </section>
 </main>
 
