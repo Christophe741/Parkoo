@@ -62,6 +62,13 @@ body {
   border: 1px solid #00529b;
 }
 
+.message.empty {
+  background: #eef6ff;
+  color: #2b4a6f;
+  border-radius: 0.5rem;
+  border: 1px solid #cfe3ff;
+}
+
 /*---------- 3. COMPONENT : desktop_header.php ----------*/
 .desktop-header {
   display: none;
