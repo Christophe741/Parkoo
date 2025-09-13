@@ -53,17 +53,13 @@ function renderReviews(reviews, summary, container) {
   const title = document.createElement("h2");
   if (summary.count) {
     title.textContent = `Avis (${summary.count}) - ${summary.average}/5`;
-  } else {
-    title.textContent = "Avis";
   }
   section.appendChild(title);
 
   if (reviews.length) {
     reviews.forEach((rev) => section.appendChild(buildReview(rev)));
   } else {
-    const p = document.createElement("p");
-    p.textContent = "Aucun avis pour ce parking.";
-    section.appendChild(p);
+    renderMessage("Aucun avis pour le moment", container, "empty", false);
   }
 
   container.appendChild(section);
