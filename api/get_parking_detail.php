@@ -1,5 +1,5 @@
 <?php
-require_once '../db/config.php';
+require_once __dir__ . '/../db/config.php';
 header('Content-Type: application/json; charset=utf-8');
 
 $parkingId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
@@ -59,19 +59,31 @@ try {
   );
 
   $reviews = [];
+  $reviewerIds = [];
+  $rawReviews = [];
   foreach ($cursor as $doc) {
-    $reviewerStmt = $pdo->prepare("SELECT firstname, name FROM users WHERE id = ? LIMIT 1");
-    $reviewerStmt->execute([$doc['reviewer_id']]);
-    $reviewer = $reviewerStmt->fetch(PDO::FETCH_ASSOC);
-    $reviewer_name = $reviewer
-      ? (strtoupper(substr($reviewer['firstname'],0,1)) . strtolower(substr($reviewer['firstname'],1)) . ' ' . strtoupper(substr($reviewer['name'],0,1)) . '.')
-      : '';
+    $reviewerIds[] = $doc['reviewer_id'];
+    $rawReviews[] = $doc;
+  }
 
+  $reviewerNames = [];
+  if ($reviewerIds) {
+    $in = implode(',', array_fill(0, count($reviewerIds), '?'));
+    $sql = "SELECT id, firstname, name FROM users WHERE id IN ($in)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute($reviewerIds);
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+      $reviewerNames[$row['id']] = strtoupper(substr($row['firstname'],0,1)) . strtolower(substr($row['firstname'],1)) . ' ' . strtoupper(substr($row['name'],0,1)) . '.';
+    }
+  }
+
+  foreach ($rawReviews as $doc) {
+    $reviewer_name = $reviewerNames[$doc['reviewer_id']] ?? '';
     $reviews[] = [
       'reviewer_name'     => $reviewer_name,
       'rating'            => $doc['rating'],
-      'comment'           => $doc['comment'] ?? '',
-      'created_at'        => $doc['created_at'] ?? '',
+      'comment'           => $doc['comment'],
+      'created_at'        => $doc['created_at'],
     ];
   }
 
