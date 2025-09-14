@@ -10,7 +10,7 @@ db.reviews.insertMany([
   {
     reviewer_id: 2,
     reviewed_user_id: 1,
-    rating: 4,
+    rating: 5,
     comment: "Rien à redire !",
     created_at: "2025-09-22T14:30:00Z",
   },
