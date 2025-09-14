@@ -5,20 +5,13 @@ import { cloneTemplate, renderMessage } from "./utils/dom.js";
 
 // === Fonctions liées au rendu DOM ===
 
-function buildParkingDetail(parking) {
+function renderParkingDetail(parking, container) {
   const card = cloneTemplate("parking-card-template");
-  updateCardImage(card, parking);
-  updateCardText(card, parking);
-  return card;
-}
 
-function updateCardImage(card, parking) {
   const img = card.querySelector(".photo");
   img.src = `assets/profile-pictures/${parking.photo}`;
   img.alt = `Photo de ${parking.username}`;
-}
 
-function updateCardText(card, parking) {
   card.querySelector(".city").textContent = parking.city;
   card.querySelector(".display-name").textContent = parking.display_name;
   card.querySelector(".description").textContent = parking.description;
@@ -32,37 +25,34 @@ function updateCardText(card, parking) {
   card.querySelector(".has-ev-charging").textContent = parking.has_ev_charging
     ? "Oui"
     : "Non";
-}
 
-function renderParkingDetail(parking, container) {
-  container.appendChild(buildParkingDetail(parking));
-}
-
-function buildReview(review) {
-  const reviewEl = cloneTemplate("review-template");
-  reviewEl.querySelector(".reviewer-name").textContent = review.reviewer_name;
-  reviewEl.querySelector(".rating").textContent = `Note : ${review.rating}/5`;
-  reviewEl.querySelector(".comment").textContent = review.comment || "";
-  return reviewEl;
+  container.appendChild(card);
 }
 
 function renderReviews(reviews, summary, container) {
-  const section = document.createElement("section");
-  section.classList.add("reviews");
+  const section = cloneTemplate("reviews-template");
+  const title = section.querySelector(".reviews-title");
+  const list = section.querySelector(".reviews-list");
+  const model = section.querySelector(".review-model");
 
-  const title = document.createElement("h2");
-  if (summary.count) {
-    title.textContent = `Avis (${summary.count}) - ${summary.average}/5`;
-  }
-  section.appendChild(title);
+  title.textContent = `${summary.count} avis - ${summary.average}/5`;
 
   if (reviews.length) {
-    reviews.forEach((rev) => section.appendChild(buildReview(rev)));
+    for (const rev of reviews) {
+      const el = model.cloneNode(true);
+      el.classList.remove("review-model");
+      el.querySelector(".reviewer-name").textContent = rev.reviewer_name;
+      el.querySelector(".rating").textContent = `Note : ${rev.rating}/5`;
+      el.querySelector(".comment").textContent = rev.comment || "";
+      list.appendChild(el);
+    }
+
+    model.remove();
+    container.appendChild(section);
   } else {
+    section.remove();
     renderMessage("Aucun avis pour le moment", container, "empty", false);
   }
-
-  container.appendChild(section);
 }
 
 // === Fonctions métier ===
