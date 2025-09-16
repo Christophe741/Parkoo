@@ -11,16 +11,19 @@
   <section class="results">
      <div id="results"></div>
        <template id="parking-card-template">
+        <div class="parking-card-block"> 
           <div class="parking-card">
            <img class="photo" src="" alt="" />
             <h1 class="display-name"></h1>
-           <p class="city"></p>
-           <p class="description"></p>
-           <p><strong>Parking couvert :</strong> <span class="is-covered"></span></p>
-           <p><strong>Accès handicapés :</strong> <span class="is-accessible"></span></p>
-           <p><strong>Recharge éléctrique :</strong> <span class="has-ev-charging"></span></p>
-           <p class="price"></p>
+            <p class="city"></p>
+            <p class="description"></p>
+            <p><strong>Parking couvert :</strong> <span class="is-covered"></span></p>
+            <p><strong>Accès handicapés :</strong> <span class="is-accessible"></span></p>
+            <p><strong>Recharge éléctrique :</strong> <span class="has-ev-charging"></span></p>
+            <p class="price"></p>
           </div>
+           <a href="#" class="reserve-btn">Réserver</a>
+        </div>
        </template>
        <template id="message-template">
         <p class="message"></p>
