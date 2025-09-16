@@ -198,6 +198,14 @@ h1 {
   color: #fff;
 }
 
+.btn--light:hover {
+  filter: brightness(0.95);
+}
+
+.btn--dark:hover {
+  filter: brightness(1.15);
+}
+
 .about {
   padding: 2rem 1.25rem 4rem;
   line-height: 1.6;
