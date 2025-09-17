@@ -77,6 +77,6 @@ const form = document.getElementById("search-form");
 const { city } = getPageParams();
 if (city) {
   fetchParkings(city, container);
+} else {
+  form.addEventListener("submit", (e) => handleFormSubmit(e, form, container));
 }
-
-form.addEventListener("submit", (e) => handleFormSubmit(e, form, container));
