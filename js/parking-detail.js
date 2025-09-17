@@ -49,7 +49,6 @@ function renderReviews(reviews, summary, container) {
     model.remove();
     container.appendChild(section);
   } else {
-    section.remove();
     renderMessage("Aucun avis pour le moment", container, "empty", false);
   }
 }
