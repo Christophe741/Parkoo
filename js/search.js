@@ -1,4 +1,3 @@
-import { domReady } from "./dom-ready.js";
 import { cloneTemplate, renderMessage } from "./utils/dom.js";
 
 // === Fonctions liées au rendu DOM ===
@@ -70,12 +69,12 @@ function handleFormSubmit(e, form, container) {
 
 // === Point d’entrée du script ===
 
-domReady(() => {
-  const container = document.getElementById("results");
-  const form = document.getElementById("search-form");
-  const { city } = getPageParams();
-  if (city) {
-    fetchParkings(city, container);
-  }
-  form.addEventListener("submit", (e) => handleFormSubmit(e, form, container));
-});
+const container = document.getElementById("results");
+const form = document.getElementById("search-form");
+
+const { city } = getPageParams();
+if (city) {
+  fetchParkings(city, container);
+}
+
+form.addEventListener("submit", (e) => handleFormSubmit(e, form, container));

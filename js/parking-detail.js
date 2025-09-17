@@ -1,6 +1,5 @@
 // === Import des dépendances ===
 
-import { domReady } from "./dom-ready.js";
 import { cloneTemplate, renderMessage } from "./utils/dom.js";
 
 // === Fonctions liées au rendu DOM ===
@@ -76,14 +75,11 @@ function fetchParkingDetail(parkingId, container) {
 
 // === Point d’entrée du script ===
 
-domReady(() => {
-  const container = document.getElementById("results");
-  const parkingId = new URLSearchParams(window.location.search).get("id");
+const container = document.getElementById("results");
+const parkingId = new URLSearchParams(window.location.search).get("id");
 
-  if (!parkingId) {
-    renderMessage("Aucun parking sélectionné.", container);
-    return;
-  }
+if (!parkingId) {
+  renderMessage("Aucun parking sélectionné.", container);
+}
 
-  fetchParkingDetail(parkingId, container);
-});
+fetchParkingDetail(parkingId, container);
