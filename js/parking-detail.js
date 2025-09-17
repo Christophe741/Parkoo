@@ -78,8 +78,8 @@ function fetchParkingDetail(parkingId, container) {
 const container = document.getElementById("results");
 const parkingId = new URLSearchParams(window.location.search).get("id");
 
-if (!parkingId) {
+if (parkingId) {
+  fetchParkingDetail(parkingId, container);
+} else {
   renderMessage("Aucun parking sélectionné.", container);
 }
-
-fetchParkingDetail(parkingId, container);
