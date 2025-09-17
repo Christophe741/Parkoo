@@ -1,3 +1,5 @@
+// === Import des dépendances ===
+
 import { cloneTemplate, renderMessage } from "./utils/dom.js";
 
 // === Fonctions liées au rendu DOM ===
