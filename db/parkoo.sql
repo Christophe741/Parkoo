@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db
--- Généré le : mer. 03 sep. 2025 à 22:47
+-- Généré le : jeu. 18 sep. 2025 à 09:25
 -- Version du serveur : 10.4.34-MariaDB-1:10.4.34+maria~ubu2004
 -- Version de PHP : 8.2.27
 
@@ -34,7 +34,9 @@ CREATE TABLE `parkings` (
   `city` varchar(100) NOT NULL,
   `postal_code` varchar(10) NOT NULL,
   `price_per_hour` decimal(5,2) NOT NULL,
-  `is_covered` tinyint(1) DEFAULT 0,
+  `is_covered` tinyint(1) NOT NULL DEFAULT 0,
+  `is_accessible` tinyint(1) NOT NULL DEFAULT 0,
+  `has_ev_charging` tinyint(1) NOT NULL DEFAULT 0,
   `description` text DEFAULT NULL,
   `is_available` tinyint(1) DEFAULT 1,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
@@ -44,12 +46,12 @@ CREATE TABLE `parkings` (
 -- Déchargement des données de la table `parkings`
 --
 
-INSERT INTO `parkings` (`id`, `owner_id`, `address`, `city`, `postal_code`, `price_per_hour`, `is_covered`, `description`, `is_available`, `created_at`) VALUES
-(1, 3, '12 rue du Lac', 'Lyon', '69001', 2.50, 1, 'Place couverte près du métro.', 1, '2025-08-31 20:12:41'),
-(2, 4, '12 rue des Acacias', 'Toulouse', '31000', 1.80, 0, 'Bonjour , je vous propose 4 places de parking sécurisées ( portail et vidéo) à 5 min de l\'aéroport. Le trajet pour vous conduire à l\'aéroport et revenir vous chercher se fera avec mon véhicule personnel, de jour comme de nuit.', 1, '2025-08-31 20:12:41'),
-(3, 2, '55 boulevard Saint-Michel', 'Paris', '75005', 3.50, 1, 'Garage sécurisé proche du Jardin du Luxembourg.', 1, '2025-08-31 20:12:41'),
-(4, 1, '24 rue de la Plage', 'Nice', '06000', 2.00, 0, 'Stationnement à 5 min à pied de la mer.', 0, '2025-08-31 20:12:41'),
-(5, 7, '8 avenue des Lilas', 'Toulouse', '31000', 2.80, 0, 'Place à l’ombre dans une cour privée.', 1, '2025-09-02 00:18:57');
+INSERT INTO `parkings` (`id`, `owner_id`, `address`, `city`, `postal_code`, `price_per_hour`, `is_covered`, `is_accessible`, `has_ev_charging`, `description`, `is_available`, `created_at`) VALUES
+(1, 3, '12 rue du Lac', 'Lyon', '69001', 2.50, 1, 0, 0, 'Place couverte près du métro.', 1, '2025-08-31 20:12:41'),
+(2, 4, '12 rue des Acacias', 'Toulouse', '31000', 1.80, 0, 0, 0, 'Bonjour , je vous propose 4 places de parking sécurisées ( portail et vidéo) à 5 min de l\'aéroport. Le trajet pour vous conduire à l\'aéroport et revenir vous chercher se fera avec mon véhicule personnel, de jour comme de nuit.', 1, '2025-08-31 20:12:41'),
+(3, 2, '55 boulevard Saint-Michel', 'Paris', '75005', 3.50, 1, 0, 0, 'Garage sécurisé proche du Jardin du Luxembourg.', 1, '2025-08-31 20:12:41'),
+(4, 1, '24 rue de la Plage', 'Nice', '06000', 2.00, 1, 0, 0, 'Stationnement à 5 min à pied de la mer.', 0, '2025-08-31 20:12:41'),
+(5, 7, '8 avenue des Lilas', 'Toulouse', '31000', 2.80, 0, 0, 0, 'Place à l’ombre dans une cour privée.', 1, '2025-09-02 00:18:57');
 
 -- --------------------------------------------------------
 
@@ -81,8 +83,7 @@ CREATE TABLE `users` (
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
   `role` enum('utilisateur','modérateur','admin') NOT NULL DEFAULT 'utilisateur',
-  `rating` float DEFAULT NULL,
-  `photo` varchar(255) NOT NULL DEFAULT 'default-profile.png',
+  `photo` varchar(255) NOT NULL DEFAULT 'default-parking.png',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -90,12 +91,12 @@ CREATE TABLE `users` (
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `firstname`, `email`, `password`, `role`, `rating`, `photo`, `created_at`) VALUES
-(1, 'martin', 'alice', 'alice@example.com', 'password1', 'utilisateur', 4.5, 'default-profile.png', '2025-08-31 20:04:18'),
-(2, 'dupont', 'bob', 'bob@example.com', 'password2', 'utilisateur', 4.8, 'default-profile.png', '2025-08-31 20:04:18'),
-(3, 'smith', 'john', 'john@example.com', 'password3', 'utilisateur', NULL, 'default-profile.png', '2025-08-31 20:04:18'),
-(4, 'johnson', 'david', 'david@example.com', 'password4', 'utilisateur', 4.2, 'default-profile.png', '2025-08-31 20:04:18'),
-(7, 'morrel', 'henry', 'henry@example.com', 'password5', 'utilisateur', 4, 'default-profile.png', '2025-09-02 00:16:32');
+INSERT INTO `users` (`id`, `name`, `firstname`, `email`, `password`, `role`, `photo`, `created_at`) VALUES
+(1, 'martin', 'alice', 'alice@example.com', 'password1', 'utilisateur', 'default-parking.png', '2025-08-31 20:04:18'),
+(2, 'dupont', 'bob', 'bob@example.com', 'password2', 'utilisateur', 'default-parking.png', '2025-08-31 20:04:18'),
+(3, 'smith', 'john', 'john@example.com', 'password3', 'utilisateur', 'default-parking.png', '2025-08-31 20:04:18'),
+(4, 'johnson', 'david', 'david@example.com', 'password4', 'utilisateur', 'default-parking.png', '2025-08-31 20:04:18'),
+(7, 'morrel', 'henry', 'henry@example.com', 'password5', 'utilisateur', 'default-parking.png', '2025-09-02 00:16:32');
 
 --
 -- Index pour les tables déchargées
