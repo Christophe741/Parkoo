@@ -3,20 +3,18 @@ require_once __DIR__ . '/../vendor/autoload.php';
 $envLocalPath = __DIR__ . '/../.env.local';
 $envPath      = __DIR__ . '/../.env';
 
-$envFile = (file_exists($envLocalPath) && filesize($envLocalPath) > 0)
+$envFile = (filesize($envLocalPath) > 0)
     ? $envLocalPath
     : $envPath;
 
-    if (file_exists($envFile)) {
-    $lines = file($envFile);
-    foreach ($lines as $line) {  
-        $line = trim($line);
-        if ($line === '' || str_starts_with($line, '#')) {
-            continue;
-        }
-        list($name, $value) = explode('=', $line, 2);
-        putenv("$name=$value");
+$lines = file($envFile);
+foreach ($lines as $line) {
+    $line = trim($line);
+    if ($line === '' || str_starts_with($line, '#')) {
+        continue;
     }
+    [$name, $value] = explode('=', $line, 2);
+    putenv("$name=$value");
 }
 
 $host = getenv('DB_HOST');
