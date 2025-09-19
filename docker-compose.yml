@@ -10,7 +10,7 @@ services:
     depends_on:
       - db
   db:
-    image: mariadb:12.0.2
+    image: mariadb:12.0
     container_name: parkoo-db
     restart: always
     environment:
@@ -30,7 +30,7 @@ services:
     ports:
       - "8081:80"
   mongo:
-    image: mongo:8.0.13
+    image: mongo:8.0
     restart: always
     volumes:
       - mongo_data:/data/db
