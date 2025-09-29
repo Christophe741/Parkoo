@@ -3,7 +3,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 $envLocalPath = __DIR__ . '/../.env.local';
 $envPath      = __DIR__ . '/../.env';
 
-$envFile = (filesize($envLocalPath) > 0)
+$envFile = (file_exists($envLocalPath) && filesize($envLocalPath) > 0)
     ? $envLocalPath
     : $envPath;
     
@@ -16,10 +16,10 @@ if (file_exists($envFile)) {
     }
 }
 
-$host = getenv('DB_HOST');
+$host   = getenv('DB_HOST');
 $dbname = getenv('DB_NAME');
-$user = getenv('DB_USER');
-$pass = getenv('DB_PASS');
+$user   = getenv('DB_USER');
+$pass   = getenv('DB_PASS');
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -27,13 +27,14 @@ try {
     die("Erreur de connexion à la base de données : " . $e->getMessage());
 }
 
-$mongoUri    = getenv('MONGO_URI') ?: die('Erreur : MONGO_URI non défini.');
-$mongoDbName = getenv('MONGO_DB') ?: 'parkoo';
+$mongoHost = getenv('MONGO_HOST');
+$mongoDb   = getenv('MONGO_DB');
+
+$mongoUri = "mongodb://{$mongoHost}:27017/{$mongoDb}";
 
 try {
-    $mongo   = new MongoDB\Client($mongoUri);
-    $mongoDb = $mongo->selectDatabase($mongoDbName);
-    
+    $mongo = new MongoDB\Client($mongoUri);
+    $mongoDb = $mongo->selectDatabase($mongoDb);
 } catch (Exception $e) {
     die('Erreur de connexion à MongoDB : ' . $e->getMessage());
 }
