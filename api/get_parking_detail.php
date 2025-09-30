@@ -52,7 +52,7 @@ try {
     'display_name'    => $row['display_name'],
   ];
 
-  $reviewsCol = $mongoDb->selectCollection('reviews');
+  $reviewsCol = $mongoDatabase->selectCollection('reviews');
   $cursor = $reviewsCol->find(
     ['reviewed_user_id' => $parking['owner_id']],
     ['sort' => ['created_at' => -1]]

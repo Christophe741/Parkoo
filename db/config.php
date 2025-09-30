@@ -28,13 +28,13 @@ try {
 }
 
 $mongoHost = getenv('MONGO_HOST');
-$mongoDb   = getenv('MONGO_DB');
+$mongoDbName   = getenv('MONGO_DB');
 
-$mongoUri = "mongodb://{$mongoHost}:27017/{$mongoDb}";
+$mongoUri = "mongodb://{$mongoHost}:27017/{$mongoDbName}";
 
 try {
     $mongo = new MongoDB\Client($mongoUri);
-    $mongoDb = $mongo->selectDatabase($mongoDb);
+    $mongoDatabase = $mongo->selectDatabase($mongoDbName);
 } catch (Exception $e) {
     die('Erreur de connexion à MongoDB : ' . $e->getMessage());
 }
