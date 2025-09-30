@@ -1,5 +1,5 @@
 <?php
-require_once __dir__ . '/../db/config.php';
+require_once __DIR__ . '/../db/config.php';
 header('Content-Type: application/json; charset=utf-8');
 
 $parkingId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
