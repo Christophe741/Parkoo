@@ -27,10 +27,12 @@ try {
     die("Erreur de connexion à la base de données : " . $e->getMessage());
 }
 
-$mongoHost = getenv('MONGO_HOST');
+$mongoUser     = getenv("MONGO_USER");
+$mongoPass     = getenv("MONGO_PASS");
+$mongoHost     = getenv('MONGO_HOST');
 $mongoDbName   = getenv('MONGO_DB');
 
-$mongoUri = "mongodb://{$mongoHost}:27017/{$mongoDbName}";
+$mongoUri = "mongodb://{$mongoUser}:{$mongoPass}@{$mongoHost}:27017/{$mongoDbName}";
 
 try {
     $mongo = new MongoDB\Client($mongoUri);
