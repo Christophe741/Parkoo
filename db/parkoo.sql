@@ -122,7 +122,7 @@ ALTER TABLE `reservations`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`firstname`),
+  ADD UNIQUE KEY `firstname` (`firstname`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
