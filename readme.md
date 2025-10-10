@@ -2,24 +2,22 @@
 
 **Parkoo** est une application web permettant aux particuliers de proposer ou réserver une place de parking, de manière simple, rapide et sécurisée.
 
-## Objectif
+## Version MVP (Minimum Viable Product)
 
-Créer un site web permettant aux utilisateurs de :
+Cette version MVP se concentre sur la **fonctionnalité principale** : permettre aux utilisateurs de rechercher des places de parking.
 
-- Rechercher des places disponibles.
-- Consulter le détail d'une annonce.
-- Proposer sa propre place de stationnement.
-- Gérer son profil (en cours de développement).
-- Superviser l'activité de la plateforme (en cours de développement).
+## Fonctionnalités complémentaires implémentées
+
+- Consultation du détail d'un parking
 
 ## Technologies utilisées
 
-- **HTML / CSS / JavaScript**
-- **PHP**
-- **MySQL**
-- **MongoDB**
-- **Notion**
-- **Figma**
+- **Frontend** : HTML5, CSS3, JavaScript (Vanilla)
+- **Backend** : PHP (Vanilla)
+- **Base de données** : MariaDB, MongoDB
+- **Dépendances** : mongodb/mongodb
+- **Outils** : Docker, Composer
+- **Conception** : Figma, Notion
 
 ## Lancer le projet en local
 
