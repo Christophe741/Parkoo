@@ -1,4 +1,15 @@
-db = db.getSiblingDB("parkoo");
+const dbName = process.env.MONGO_DB;
+const appUser = process.env.MONGO_USER;
+const appPass = process.env.MONGO_PASS;
+
+db = db.getSiblingDB(dbName);
+
+db.createUser({
+  user: appUser,
+  pwd: appPass,
+  roles: [{ role: "readWrite", db: dbName }],
+});
+
 db.reviews.insertMany([
   {
     reviewer_id: 3,
